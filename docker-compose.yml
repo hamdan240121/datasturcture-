@@ -1,0 +1,11 @@
+services:
+  parking-backend:
+    build: ./backend
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./backend:/app
+      - ./frontend:/app/frontend
+    environment:
+      - FLASK_ENV=development
+    restart: unless-stopped

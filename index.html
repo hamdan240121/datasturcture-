@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-car"></i>
+                <h1>Smart Parking</h1>
+            </div>
+            <div class="status-cards">
+                <div class="status-card">
+                    <i class="fas fa-parking"></i>
+                    <div>
+                        <span class="status-number" id="totalSpots">50</span>
+                        <span class="status-label">Total Spots</span>
+                    </div>
+                </div>
+                <div class="status-card available">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <span class="status-number" id="availableSpots">50</span>
+                        <span class="status-label">Available</span>
+                    </div>
+                </div>
+                <div class="status-card occupied">
+                    <i class="fas fa-times-circle"></i>
+                    <div>
+                        <span class="status-number" id="occupiedSpots">0</span>
+                        <span class="status-label">Occupied</span>
+                    </div>
+                </div>
+                <div class="status-card rate">
+                    <i class="fas fa-chart-pie"></i>
+                    <div>
+                        <span class="status-number" id="occupancyRate">0%</span>
+                        <span class="status-label">Occupancy</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="action-panel">
+                <div class="action-card">
+                    <h2><i class="fas fa-sign-in-alt"></i> Park Vehicle</h2>
+                    <form id="parkForm">
+                        <div class="input-group">
+                            <input type="text" id="parkLicense" placeholder="License Plate (e.g., ABC123)" required>
+                            <select id="vehicleType">
+                                <option value="car">Car</option>
+                                <option value="motorcycle">Motorcycle</option>
+                                <option value="truck">Truck</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Park Vehicle
+                        </button>
+                    </form>
+                </div>
+
+                <div class="action-card">
+                    <h2><i class="fas fa-sign-out-alt"></i> Exit Vehicle</h2>
+                    <form id="exitForm">
+                        <div class="input-group">
+                            <input type="text" id="exitLicense" placeholder="License Plate" required>
+                        </div>
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-minus"></i> Exit Vehicle
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="data-panel">
+                <div class="data-card">
+                    <h3><i class="fas fa-cars"></i> Currently Parked Vehicles</h3>
+                    <div class="table-container">
+                        <table id="vehiclesTable">
+                            <thead>
+                                <tr>
+                                    <th>Spot</th>
+                                    <th>License Plate</th>
+                                    <th>Type</th>
+                                    <th>Entry Time</th>
+                                    <th>Ticket ID</th>
+                                </tr>
+                            </thead>
+                            <tbody id="vehiclesBody">
+                                <tr class="no-data">
+                                    <td colspan="5">No vehicles currently parked</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="data-card">
+                    <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                    <div class="activity-container" id="activityContainer">
+                        <div class="no-activity">No recent activity</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="notification" class="notification"></div>
+    <script src="script.js"></script>
+</body>
+</html>
